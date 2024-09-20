@@ -5,6 +5,9 @@ $publicFunctionsPath = $PSScriptRoot + $directorySeparator + 'Public' + $directo
 $privateFunctionsPath = $PSScriptRoot + $directorySeparator + 'Private' + $directorySeparator + 'ps1'
 $currentManifest = Test-ModuleManifest $moduleManifest
 
+# Module Variables:
+New-Variable -Name 'ToDoFilePath' -Value "$env:AppData\DavidP\ToDo\ToDos.json" -Option ReadOnly -Scope Script
+
 $aliases = @()
 $publicFunctions = Get-ChildItem -Path $publicFunctionsPath | Where-Object {$_.Extension -eq '.ps1'}
 $privateFunctions = Get-ChildItem -Path $privateFunctionsPath | Where-Object {$_.Extension -eq '.ps1'}
